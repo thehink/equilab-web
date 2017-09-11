@@ -4,7 +4,7 @@
   "description": "",
   "main": "build/server/index.js",
   "engines": {
-    "node": ">=7"
+    "node": ">=6"
   },
   "scripts": {
     "analyze:client": "babel-node internal/scripts/analyze --client",
