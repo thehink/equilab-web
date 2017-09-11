@@ -6,6 +6,9 @@ import path from 'path';
 import webpack from 'webpack';
 import WebpackMd5Hash from 'webpack-md5-hash';
 
+import autoprefixer from 'autoprefixer';
+import csswring from 'csswring';
+
 import { happyPackPlugin } from '../utils';
 import { ifElse } from '../../shared/utils/logic';
 import { mergeDeep } from '../../shared/utils/objects';
@@ -26,6 +29,7 @@ import config from '../../config';
  *
  * @return {Object} The webpack configuration.
  */
+
 export default function webpackConfigFactory(buildOptions) {
   const { target, optimize = false } = buildOptions;
 
@@ -44,10 +48,52 @@ export default function webpackConfigFactory(buildOptions) {
   const ifDevClient = ifElse(isDev && isClient);
   const ifProdClient = ifElse(isProd && isClient);
 
+  const postcssPlugins = removeNil([
+    // // Options for postcss. This adds vendor prefixes and compresses sass in production.
+    // // Possible to add more postcss plugins here if neccessary.
+
+    ifProd(() =>
+      autoprefixer({
+        browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9'],
+      })
+    ),
+
+    ifProd(() => csswring({ removeAllComments: true })),
+  ]);
+
+  const cssOptions = {
+    modules: true,
+    sourceMap: true,
+    camelCase: true,
+    importLoaders: 2,
+    localIdentName: isDev ? '[name]__[local]___[hash:base64:5]' : '[hash:base64:8]',
+  };
+
+  const sassOptions = {
+    outputStyle: 'expanded',
+    includePaths: [
+      path.resolve(appRootDir.get(), 'node_modules'),
+      path.resolve(appRootDir.get(), 'shared', 'styles'),
+    ],
+  };
+
+  const cssLoaders = [
+    {
+      loader: 'postcss-loader',
+      options: {
+        plugins: postcssPlugins,
+      },
+    },
+    {
+      loader: 'sass-loader',
+      options: sassOptions,
+    },
+  ];
+
   console.log(
     `==> Creating ${isProd
       ? 'an optimised'
-      : 'a development'} bundle configuration for the "${target}"`,
+      : 'a development'} bundle configuration for the "${target}"`
   );
 
   const bundleConfig =
@@ -79,8 +125,8 @@ export default function webpackConfigFactory(buildOptions) {
         ifDevClient(
           () =>
             `webpack-hot-middleware/client?reload=true&path=http://${config('host')}:${config(
-              'clientDevServerPort',
-            )}/__webpack_hmr`,
+              'clientDevServerPort'
+            )}/__webpack_hmr`
         ),
         // The source entry file for the bundle.
         path.resolve(appRootDir.get(), bundleConfig.srcEntryFile),
@@ -103,7 +149,7 @@ export default function webpackConfigFactory(buildOptions) {
         // For any other bundle (typically a server/node) bundle we want a
         // determinable output name to allow for easier importing/execution
         // of the bundle by our scripts.
-        '[name].js',
+        '[name].js'
       ),
       // The name format for any additional chunks produced for the bundle.
       chunkFilename: '[name]-[chunkhash].js',
@@ -115,10 +161,10 @@ export default function webpackConfigFactory(buildOptions) {
         // As we run a seperate development server for our client and server
         // bundles we need to use an absolute http path for the public path.
         `http://${config('host')}:${config('clientDevServerPort')}${config(
-          'bundles.client.webPath',
+          'bundles.client.webPath'
         )}`,
         // Otherwise we expect our bundled client to be served from this path.
-        bundleConfig.webPath,
+        bundleConfig.webPath
       ),
     },
 
@@ -146,12 +192,12 @@ export default function webpackConfigFactory(buildOptions) {
         isDev ||
         // Allow for the following flag to force source maps even for production
         // builds.
-        config('includeSourceMapsForOptimisedClientBundle'),
+        config('includeSourceMapsForOptimisedClientBundle')
     )(
       // Produces an external source map (lives next to bundle output files).
       'source-map',
       // Produces no source map.
-      'hidden-source-map',
+      'hidden-source-map'
     ),
 
     // Performance budget feature.
@@ -164,7 +210,7 @@ export default function webpackConfigFactory(buildOptions) {
       // Enable webpack's performance hints for production client builds.
       { hints: 'warning' },
       // Else we have to set a value of "false" if we don't want the feature.
-      false,
+      false
     ),
 
     resolve: {
@@ -199,8 +245,8 @@ export default function webpackConfigFactory(buildOptions) {
               // And any items that have been whitelisted in the config need
               // to be included in the bundling process too.
               .concat(config('nodeExternalsFileTypeWhitelist') || []),
-          },
-        ),
+          }
+        )
       ),
     ]),
 
@@ -216,7 +262,7 @@ export default function webpackConfigFactory(buildOptions) {
             banner: 'require("source-map-support").install();',
             raw: true,
             entryOnly: false,
-          }),
+          })
       ),
 
       // Implement webpack 3 scope hoisting that will remove function wrappers
@@ -284,7 +330,7 @@ export default function webpackConfigFactory(buildOptions) {
           new AssetsPlugin({
             filename: config('bundleAssetsFileName'),
             path: path.resolve(appRootDir.get(), bundleConfig.outputPath),
-          }),
+          })
       ),
 
       // We don't want webpack errors to occur during development as it will
@@ -300,7 +346,7 @@ export default function webpackConfigFactory(buildOptions) {
         () =>
           new webpack.LoaderOptionsPlugin({
             minimize: true,
-          }),
+          })
       ),
 
       // For our production client we need to make sure we pass the required
@@ -320,7 +366,7 @@ export default function webpackConfigFactory(buildOptions) {
               comments: false,
               screw_ie8: true,
             },
-          }),
+          })
       ),
 
       // For the production build of the client we need to extract the CSS into
@@ -330,7 +376,7 @@ export default function webpackConfigFactory(buildOptions) {
           new ExtractTextPlugin({
             filename: '[name]-[contenthash].css',
             allChunks: true,
-          }),
+          })
       ),
 
       // -----------------------------------------------------------------------
@@ -407,7 +453,7 @@ export default function webpackConfigFactory(buildOptions) {
                   ifProd('transform-react-constant-elements'),
                 ].filter(x => x != null),
               },
-              buildOptions,
+              buildOptions
             ),
           },
         ],
@@ -420,12 +466,31 @@ export default function webpackConfigFactory(buildOptions) {
           loaders: [
             'style-loader',
             {
-              path: 'css-loader',
-              // Include sourcemaps for dev experience++.
-              query: { sourceMap: true },
+              loader: 'css-loader',
+              options: {
+                ...cssOptions,
+                modules: false,
+              },
             },
+            ...cssLoaders,
           ],
-        }),
+        })
+      ),
+
+      ifDevClient(() =>
+        happyPackPlugin({
+          name: 'happypack-devclient-css-modules',
+          loaders: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                ...cssOptions,
+              },
+            },
+            ...cssLoaders,
+          ],
+        })
       ),
 
       // END: HAPPY PACK PLUGINS
@@ -461,7 +526,7 @@ export default function webpackConfigFactory(buildOptions) {
             ifElse(isClient || isServer)(
               mergeDeep(
                 {
-                  test: /\.css$/,
+                  test: /\.global\.(css|scss)$/,
                 },
                 // For development clients we will defer all our css processing to the
                 // happypack plugin named "happypack-devclient-css".
@@ -479,15 +544,80 @@ export default function webpackConfigFactory(buildOptions) {
                 ifProdClient(() => ({
                   loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader'],
+                    use: [
+                      {
+                        loader: 'css-loader',
+                        options: {
+                          ...cssOptions,
+                          modules: false,
+                        },
+                      },
+                      ...cssLoaders,
+                    ],
                   }),
                 })),
                 // When targetting the server we use the "/locals" version of the
                 // css loader, as we don't need any css files for the server.
                 ifNode({
-                  loaders: ['css-loader/locals'],
+                  loaders: [
+                    {
+                      loader: 'css-loader/locals',
+                      options: {
+                        ...cssOptions,
+                      },
+                    },
+                    ...cssLoaders,
+                  ],
+                })
+              )
+            ),
+
+            ifElse(isClient || isServer)(
+              mergeDeep(
+                {
+                  test: /^((?!\.global).)*\.(css|scss)$/,
+                },
+                // For development clients we will defer all our css processing to the
+                // happypack plugin named "happypack-devclient-css".
+                // See the respective plugin within the plugins section for full
+                // details on what loader is being implemented.
+                ifDevClient({
+                  loaders: ['happypack/loader?id=happypack-devclient-css-modules'],
                 }),
-              ),
+                // For a production client build we use the ExtractTextPlugin which
+                // will extract our CSS into CSS files. We don't use happypack here
+                // as there are some edge cases where it fails when used within
+                // an ExtractTextPlugin instance.
+                // Note: The ExtractTextPlugin needs to be registered within the
+                // plugins section too.
+                ifProdClient(() => ({
+                  loader: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                      {
+                        loader: 'css-loader',
+                        options: {
+                          ...cssOptions,
+                        },
+                      },
+                      ...cssLoaders,
+                    ],
+                  }),
+                })),
+                // When targetting the server we use the "/locals" version of the
+                // css loader, as we don't need any css files for the server.
+                ifNode({
+                  loaders: [
+                    {
+                      loader: 'css-loader/locals',
+                      options: {
+                        ...cssOptions,
+                      },
+                    },
+                    ...cssLoaders,
+                  ],
+                })
+              )
             ),
 
             // MODERNIZR
@@ -519,7 +649,7 @@ export default function webpackConfigFactory(buildOptions) {
                   ? // When running in dev mode the client bundle runs on a
                     // seperate port so we need to put an absolute path here.
                     `http://${config('host')}:${config('clientDevServerPort')}${config(
-                      'bundles.client.webPath',
+                      'bundles.client.webPath'
                     )}`
                   : // Otherwise we just use the configured web path for the client.
                     config('bundles.client.webPath'),
