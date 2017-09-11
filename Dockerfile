@@ -11,5 +11,5 @@ RUN yarn build
 
 ENV PORT=80
 
-EXPOSE 5000
+# EXPOSE 5000
 CMD [ "yarn", "start" ]
