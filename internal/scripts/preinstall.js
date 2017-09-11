@@ -26,7 +26,7 @@ function checkNodeVersion() {
       'You are currently running Node %s but %s requires %s. Please use a supported version of Node.\n',
       process.version,
       packageJson.name,
-      packageJson.engines.node,
+      packageJson.engines.node
     );
     process.exit(1);
   }
