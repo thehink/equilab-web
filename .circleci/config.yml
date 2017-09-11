@@ -10,10 +10,6 @@ jobs:
     steps:
       - checkout
 
-      - add_ssh_keys:
-          fingerprints:
-            - "e3:99:04:f1:71:29:87:18:96:8f:2d:a8:50:78:d5:b6"
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -36,6 +32,7 @@ jobs:
           name: Deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo 'benjar.net ecdsa-sha2-nistp256 AAAAB3NzaC1yc2EAAAADAQABAAABAQC/lBfRAKMHq8JeXZsmeFghhtA2TWPhqDcZNFLXNKQjim2hugKXvqPb4iCccpiWHoT2hCHWOT55ODXDDrfEVTW7F/u3y3dIv8Dr9ueQ9sUaRW0OE00apEVrfcIEkVcazAQgVCwjt3RP7p7LN2qRxucAcZ/6/Irp737IZ/aTnSL5rjYS3UnolmJBTT206yWUxt88ensF2Nl60w6RDbfZlz2jREVz/ktNwtqAMzKomHEz3bZQO0tKv4//xsasVZCVomTYhQjEOr/52gkUadAkqnqpc1o1QjB5gsB96jyKE1KuWAutN/LZtcwav25vTiH5dv2oAXmdg3RsETLUXO6hbL8J' >> ~/.ssh/known_hosts
               git remote add dokku dokku@benjar.net:equilab
               git push dokku master
             fi
