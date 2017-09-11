@@ -31,8 +31,8 @@ jobs:
       - deploy:
           name: Deploy
           command: |
+            echo 'benjar.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAVSSC/weC71gUFeKPvJledAfiHdQQLcITaGgmDzTbiWbzNtuhnashUPp8bskY3cPhA9l/mc6YyxMHtmqB5rMcw=' >> ~/.ssh/known_hosts
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo 'benjar.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAVSSC/weC71gUFeKPvJledAfiHdQQLcITaGgmDzTbiWbzNtuhnashUPp8bskY3cPhA9l/mc6YyxMHtmqB5rMcw=' >> ~/.ssh/known_hosts
               git remote add dokku dokku@benjar.net:equilab
               git push dokku master
             fi

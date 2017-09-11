@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # Bundle app source
 COPY . /usr/src/app
-RUN yarn
+RUN yarn install
 RUN yarn build
 
 ENV PORT=80
