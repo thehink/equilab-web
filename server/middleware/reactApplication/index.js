@@ -4,6 +4,9 @@ import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { AsyncComponentProvider, createAsyncContext } from 'react-async-component';
 import asyncBootstrapper from 'react-async-bootstrapper';
+import { Provider } from 'react-redux';
+
+import createStore from 'store';
 
 import config from '../../../config';
 
@@ -42,12 +45,20 @@ export default function reactApplicationMiddleware(request, response) {
   // query for the results of the render.
   const reactRouterContext = {};
 
+  const history = {};
+
+  const initialState = {};
+
+  const store = createStore(initialState, history);
+
   // Declare our React application.
   const app = (
     <AsyncComponentProvider asyncContext={asyncComponentsContext}>
-      <StaticRouter location={request.url} context={reactRouterContext}>
-        <DemoApp />
-      </StaticRouter>
+      <Provider store={store}>
+        <StaticRouter location={request.url} context={reactRouterContext}>
+          <DemoApp />
+        </StaticRouter>
+      </Provider>
     </AsyncComponentProvider>
   );
 
@@ -63,7 +74,8 @@ export default function reactApplicationMiddleware(request, response) {
         nonce={nonce}
         helmet={Helmet.rewind()}
         asyncComponentsState={asyncComponentsContext.getState()}
-      />,
+        initialState={store.getState()}
+      />
     );
 
     // Check if the router context contains a redirect, if so we need to set
@@ -81,7 +93,7 @@ export default function reactApplicationMiddleware(request, response) {
             // Our App component will handle the rendering of an Error404 view.
             404
           : // Otherwise everything is all good and we send a 200 OK status.
-            200,
+            200
       )
       .send(`<!DOCTYPE html>${html}`);
   });

@@ -5,6 +5,9 @@ import { render } from 'react-dom';
 import BrowserRouter from 'react-router-dom/BrowserRouter';
 import asyncBootstrapper from 'react-async-bootstrapper';
 import { AsyncComponentProvider } from 'react-async-component';
+import { Provider } from 'react-redux';
+
+import createStore from 'store';
 
 import './polyfills';
 
@@ -19,6 +22,10 @@ const container = document.querySelector('#app');
 // will force full page refreshes on each page change.
 const supportsHistory = 'pushState' in window.history;
 
+const history = {};
+
+const store = createStore(window.__data, history);
+
 // Get any rehydrateState for the async components.
 // eslint-disable-next-line no-underscore-dangle
 const asyncComponentsRehydrateState = window.__ASYNC_COMPONENTS_REHYDRATE_STATE__;
@@ -32,9 +39,11 @@ function renderApp(TheApp) {
   const app = (
     <ReactHotLoader>
       <AsyncComponentProvider rehydrateState={asyncComponentsRehydrateState}>
-        <BrowserRouter forceRefresh={!supportsHistory}>
-          <TheApp />
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter forceRefresh={!supportsHistory}>
+            <TheApp />
+          </BrowserRouter>
+        </Provider>
       </AsyncComponentProvider>
     </ReactHotLoader>
   );

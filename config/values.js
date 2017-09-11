@@ -5,6 +5,9 @@
  * absolute paths should be resolved during runtime by our build internal/server.
  */
 
+import appRootDir from 'app-root-dir';
+import path from 'path';
+
 import * as EnvVars from './utils/envVars';
 
 const values = {
@@ -261,6 +264,15 @@ const values = {
       // eslint-disable-next-line no-unused-vars
       const { target, mode } = buildOptions;
 
+      babelConfig.presets.push('stage-1');
+      babelConfig.plugins.push('transform-class-properties');
+      babelConfig.plugins.push('transform-object-rest-spread');
+      babelConfig.plugins.push('transform-decorators-legacy');
+
+      if (mode === 'production') {
+        babelConfig.plugins.push('transform-react-remove-prop-types');
+      }
+
       // Example
       /*
       if (target === 'server' && mode === 'development') {
@@ -283,6 +295,38 @@ const values = {
     webpackConfig: (webpackConfig, buildOptions) => {
       // eslint-disable-next-line no-unused-vars
       const { target, mode } = buildOptions;
+
+      const isProd = mode === 'production';
+      const isDev = mode === 'development';
+
+      const isClient = target === 'client';
+      const isServer = target === 'server';
+
+      if (!webpackConfig.resolve.modules) {
+        webpackConfig.resolve.modules = [];
+      }
+
+      const modules = [
+        path.resolve(appRootDir.get()),
+        path.resolve(appRootDir.get(), './shared'),
+        path.resolve(appRootDir.get(), './shared/components'),
+        path.resolve(appRootDir.get(), './node_modules'),
+        path.resolve(appRootDir.get(), './client/destination'),
+      ];
+
+      modules.forEach((module) => {
+        webpackConfig.resolve.modules.push(module);
+      });
+
+      webpackConfig.resolve.alias.config = path.resolve(appRootDir.get(), './config');
+
+      if (target === 'client' && mode === 'production') {
+        webpackConfig.plugins.push(
+          new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+          })
+        );
+      }
 
       // Example:
       /*
@@ -307,7 +351,7 @@ const values = {
 // client bundle. That would be a big NO NO to do. :)
 if (process.env.BUILD_FLAG_IS_CLIENT === 'true') {
   throw new Error(
-    "You shouldn't be importing the `<projectroot>/config/values.js` directly into code that will be included in your 'client' bundle as the configuration object will be sent to user's browsers. This could be a security risk! Instead, use the `config` helper function located at `<projectroot>/config/index.js`.",
+    "You shouldn't be importing the `<projectroot>/config/values.js` directly into code that will be included in your 'client' bundle as the configuration object will be sent to user's browsers. This could be a security risk! Instead, use the `config` helper function located at `<projectroot>/config/index.js`."
   );
 }
 
