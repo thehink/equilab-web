@@ -34,6 +34,8 @@ const values = {
   // The port on which the server should run.
   port: EnvVars.number('PORT', 1337),
 
+  googleAnalytics: EnvVars.string('GOOGLE_ANALYTICS', ''),
+
   // The port on which the client bundle development server should run.
   clientDevServerPort: EnvVars.number('CLIENT_DEV_PORT', 7331),
 
@@ -95,6 +97,8 @@ const values = {
       // Allow scripts from cdn.polyfill.io so that we can import the
       // polyfill.
       'cdn.polyfill.io',
+      'www.google-analytics.com',
+      'data:',
     ],
     styleSrc: [
       'cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css',
