@@ -2,8 +2,21 @@
 
 ## Install
 
- - `yarn install`
- - `yarn build`
- - `yarn start`
+- `yarn install`
 
-## Develop
+### Production
+
+- `yarn build`
+- `yarn start`
+
+### Develop
+
+- `yarn develop`
+
+### Test
+
+- `yarn test`
+
+#### Coverage
+
+- `yarn test:coverage`
