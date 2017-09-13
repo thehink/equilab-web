@@ -12,7 +12,6 @@
     "build": "babel-node internal/scripts/build --optimize",
     "build:dev": "babel-node internal/scripts/build",
     "clean": "cross-env babel-node internal/scripts/clean",
-    "deploy": "babel-node internal/scripts/deploy",
     "develop": "cross-env DEPLOYMENT=development babel-node internal/development",
     "lint": "eslint client server shared config internal",
     "precommit": "lint-staged",
