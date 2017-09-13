@@ -1,3 +1,9 @@
 # Equilab Web
 
-test
+## Install
+
+ - `yarn install`
+ - `yarn build`
+ - `yarn start`
+
+## Develop
