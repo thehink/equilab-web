@@ -11,7 +11,7 @@ import createStore from 'store';
 import config from '../../../config';
 
 import ServerHTML from './ServerHTML';
-import DemoApp from '../../../shared/components/DemoApp';
+import App from '../../../shared/components/Equilab';
 
 /**
  * React application middleware, supports server side rendering.
@@ -56,7 +56,7 @@ export default function reactApplicationMiddleware(request, response) {
     <AsyncComponentProvider asyncContext={asyncComponentsContext}>
       <Provider store={store}>
         <StaticRouter location={request.url} context={reactRouterContext}>
-          <DemoApp />
+          <App />
         </StaticRouter>
       </Provider>
     </AsyncComponentProvider>
