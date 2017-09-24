@@ -36,6 +36,9 @@
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/(build|internal|node_modules|flow-typed|public)/"
+    ],
+    "setupFiles": [
+      "raf/polyfill"
     ]
   },
   "repository": {
@@ -69,6 +72,7 @@
     "normalize.css": "7.0.0",
     "offline-plugin": "4.8.3",
     "prop-types": "15.5.10",
+    "raf": "^3.3.2",
     "react": "16.0.0-rc.2",
     "react-async-bootstrapper": "1.1.1",
     "react-async-component": "1.0.0-beta.3",
