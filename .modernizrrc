@@ -3,6 +3,6 @@
   "options": [],
   "feature-detects": [
     "elem/picture",
-    "test/requestAnimationFrame"
+    "requestanimationframe"
   ]
 }
