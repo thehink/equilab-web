@@ -14,5 +14,5 @@ if (!Modernizr.picture) {
   require('picturefill/dist/plugins/mutation/pf.mutation');
   */
 } else {
-  console.log('Client has support for "picture".');
+  // console.log('Client has support for "picture".');
 }

@@ -5,11 +5,11 @@ import Switch from 'react-router/Switch';
 import FrontPage from './FrontPage';
 import Error404 from './Error404';
 
-const router = () => (
+const routes = () => (
   <Switch>
     <Route exact path="/" component={FrontPage} />
     <Route component={Error404} />
   </Switch>
-  );
+);
 
-export default router;
+export default routes;

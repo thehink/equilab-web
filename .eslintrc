@@ -32,6 +32,7 @@
       "functions": "ignore"
     }]
   },
+
   "settings": {
     "import/resolver": {
       "node": {

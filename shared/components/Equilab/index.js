@@ -5,7 +5,7 @@ import config from '../../../config';
 
 import Header from './Header';
 import Footer from './Footer';
-import Router from './router';
+import Router from './routes';
 
 function App() {
   return (
