@@ -2,6 +2,11 @@
 
 import Modernizr from 'modernizr';
 
+if (!Modernizr.requestanimationframe) {
+  console.log('polyfilling requestAnimationFrame...');
+  import(/* webpackChunkName: "raf-polyfill" */ 'raf/polyfill');
+}
+
 // This is just an illustrative example.  Here you are testing the client's
 // support for the "picture" element, and if it isn't supported then you
 // load a polyfill.
@@ -14,5 +19,5 @@ if (!Modernizr.picture) {
   require('picturefill/dist/plugins/mutation/pf.mutation');
   */
 } else {
-  console.log('Client has support for "picture".');
+  // console.log('Client has support for "picture".');
 }
