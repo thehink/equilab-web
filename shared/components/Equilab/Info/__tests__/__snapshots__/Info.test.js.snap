@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Info /> renders 1`] = `
+<div>
+  <div
+    className="alert alert-primary"
+    role="alert"
+  >
+    Bootstrap works!
+  </div>
+</div>
+`;

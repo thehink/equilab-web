@@ -2,6 +2,7 @@
 
 exports[`<FrontPage /> renders 1`] = `
 <div>
+  <Info />
   FrontPage
 </div>
 `;

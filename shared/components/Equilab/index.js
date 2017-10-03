@@ -1,6 +1,9 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
+import 'styles/bootstrap.global.scss';
+import 'styles/common.global.scss';
+
 import config from '../../../config';
 
 import Header from './Header';
