@@ -4,6 +4,10 @@ class FrontPage extends Component {
   render() {
     return (
       <div>
+        {{ /*  Hero */ }}
+        {{ /*  Info */ }}
+        {{ /*  Reviews */ }}
+        {{ /*  AboveFooter */ }}
         FrontPage
       </div>
     );
