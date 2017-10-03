@@ -6,7 +6,7 @@ exports[`<Info /> renders 1`] = `
     className="alert alert-primary"
     role="alert"
   >
-    Bootstrap works!
+    Bootstrap works! asdasdasd
   </div>
 </div>
 `;
