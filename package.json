@@ -19,6 +19,7 @@
     "prepush": "jest",
     "start": "cross-env NODE_ENV=production node build/server",
     "test": "jest",
+    "test:update": "jest --updateSnapshot",
     "test:coverage": "jest --coverage"
   },
   "lint-staged": {
