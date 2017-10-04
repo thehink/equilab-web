@@ -41,7 +41,11 @@
     ],
     "setupFiles": [
       "raf/polyfill"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^.*[.](css|CSS|scss)$": "<rootDir>/internal/jest/styleMock.js",
+      "^.*[.](gif|ttf|eot|svg)$": "<rootDir>/internal/jest/assetMock.js"
+    }
   },
   "repository": {
     "type": "git",

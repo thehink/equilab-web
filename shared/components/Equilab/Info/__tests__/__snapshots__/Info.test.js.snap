@@ -1,12 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Info /> renders 1`] = `
-<div>
+<div
+  className="row undefined"
+>
   <div
-    className="alert alert-primary"
-    role="alert"
+    className="col"
   >
-    Bootstrap works! asdasdasd
+    <div
+      className="alert alert-primary"
+      role="alert"
+    >
+      <FormattedMessage
+        defaultMessage="Bootstrap works!"
+        id="Info.bootstrao"
+        values={Object {}}
+      />
+    </div>
+  </div>
+  <div
+    className="col"
+  >
+    <h2>
+      <FormattedMessage
+        defaultMessage="What is equilab?"
+        id="Info.what"
+        values={Object {}}
+      />
+    </h2>
+    <p>
+      <FormattedMessage
+        defaultMessage="A good APP!"
+        id="Info.what_sub"
+        values={Object {}}
+      />
+    </p>
   </div>
 </div>
 `;
