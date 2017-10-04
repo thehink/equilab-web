@@ -1,3 +1,5 @@
+import path from 'path';
+
 import React from 'react';
 import Helmet from 'react-helmet';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
@@ -6,12 +8,25 @@ import { AsyncComponentProvider, createAsyncContext } from 'react-async-componen
 import asyncBootstrapper from 'react-async-bootstrapper';
 import { Provider } from 'react-redux';
 
+import { IntlProvider, addLocaleData } from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import sv from 'react-intl/locale-data/sv';
+
 import createStore from 'store';
 
 import config from '../../../config';
 
 import ServerHTML from './ServerHTML';
 import App from '../../../shared/components/Equilab';
+
+const langContext = require.context('locales', false, /.json$/);
+const langs = {};
+
+langContext.keys().forEach((module) => {
+  const lang = path.basename(module, path.extname(module));
+
+  langs[lang] = langContext(module);
+});
 
 /**
  * React application middleware, supports server side rendering.
@@ -51,13 +66,24 @@ export default function reactApplicationMiddleware(request, response) {
 
   const store = createStore(initialState, history);
 
+  addLocaleData([...en, ...sv]);
+
+  const language = request.acceptsLanguages()[0];
+
+  // Split locales with a region code
+  const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
+
+  const messages = langs[languageWithoutRegionCode] || langs[language] || langs.en;
+
   // Declare our React application.
   const app = (
     <AsyncComponentProvider asyncContext={asyncComponentsContext}>
       <Provider store={store}>
-        <StaticRouter location={request.url} context={reactRouterContext}>
-          <App />
-        </StaticRouter>
+        <IntlProvider locale={language} messages={messages}>
+          <StaticRouter location={request.url} context={reactRouterContext}>
+            <App />
+          </StaticRouter>
+        </IntlProvider>
       </Provider>
     </AsyncComponentProvider>
   );
@@ -90,10 +116,10 @@ export default function reactApplicationMiddleware(request, response) {
       .status(
         reactRouterContext.missed
           ? // If the renderResult contains a "missed" match then we set a 404 code.
-            // Our App component will handle the rendering of an Error404 view.
-            404
+          // Our App component will handle the rendering of an Error404 view.
+          404
           : // Otherwise everything is all good and we send a 200 OK status.
-            200
+          200
       )
       .send(`<!DOCTYPE html>${html}`);
   });

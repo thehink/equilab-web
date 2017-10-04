@@ -7,6 +7,10 @@ import asyncBootstrapper from 'react-async-bootstrapper';
 import { AsyncComponentProvider } from 'react-async-component';
 import { Provider } from 'react-redux';
 
+import { IntlProvider, addLocaleData } from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import sv from 'react-intl/locale-data/sv';
+
 import createStore from 'store';
 
 import './polyfills';
@@ -26,6 +30,27 @@ const history = {};
 
 const store = createStore(window.__data, history);
 
+// LOCALE
+
+const langContext = require.context('locales', false, /.json$/);
+const langs = {};
+
+langContext.keys().forEach((module) => {
+  const lang = module.replace(/^.*[\\\/]/, '').split('.')[0];
+
+  langs[lang] = langContext(module);
+});
+
+addLocaleData([...en, ...sv]);
+
+const language =
+  (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage;
+
+// Split locales with a region code
+const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
+
+const messages = langs[languageWithoutRegionCode] || langs[language] || langs.en;
+
 // Get any rehydrateState for the async components.
 // eslint-disable-next-line no-underscore-dangle
 const asyncComponentsRehydrateState = window.__ASYNC_COMPONENTS_REHYDRATE_STATE__;
@@ -40,9 +65,11 @@ function renderApp(TheApp) {
     <ReactHotLoader>
       <AsyncComponentProvider rehydrateState={asyncComponentsRehydrateState}>
         <Provider store={store}>
-          <BrowserRouter forceRefresh={!supportsHistory}>
-            <TheApp />
-          </BrowserRouter>
+          <IntlProvider locale={language} messages={messages}>
+            <BrowserRouter forceRefresh={!supportsHistory}>
+              <TheApp />
+            </BrowserRouter>
+          </IntlProvider>
         </Provider>
       </AsyncComponentProvider>
     </ReactHotLoader>

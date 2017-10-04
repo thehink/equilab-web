@@ -273,6 +273,16 @@ const values = {
       babelConfig.plugins.push('transform-object-rest-spread');
       babelConfig.plugins.push('transform-decorators-legacy');
 
+      if (target === 'client') {
+        babelConfig.plugins.push([
+          'react-intl',
+          {
+            messagesDir: './build/messages',
+            enforceDescriptions: false,
+          },
+        ]);
+      }
+
       if (mode === 'production') {
         babelConfig.plugins.push('transform-react-remove-prop-types');
       }

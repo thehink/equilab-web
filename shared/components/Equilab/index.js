@@ -92,7 +92,9 @@ function App() {
         <link rel="manifest" href="/manifest.json" />
       </Helmet>
       <Header />
-      <Router />
+      <main className="container-fluid">
+        <Router />
+      </main>
       <Footer />
     </app>
   );

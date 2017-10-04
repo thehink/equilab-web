@@ -5,6 +5,7 @@ import nodeExternals from 'webpack-node-externals';
 import path from 'path';
 import webpack from 'webpack';
 import WebpackMd5Hash from 'webpack-md5-hash';
+import ImageminPlugin from 'imagemin-webpack-plugin';
 
 import autoprefixer from 'autoprefixer';
 import csswring from 'csswring';
@@ -99,9 +100,9 @@ export default function webpackConfigFactory(buildOptions) {
   const bundleConfig =
     isServer || isClient
       ? // This is either our "server" or "client" bundle.
-        config(['bundles', target])
+      config(['bundles', target])
       : // Otherwise it must be an additional node bundle.
-        config(['additionalNodeBundles', target]);
+      config(['additionalNodeBundles', target]);
 
   if (!bundleConfig) {
     throw new Error('No bundle configuration exists for target:', target);
@@ -170,9 +171,9 @@ export default function webpackConfigFactory(buildOptions) {
 
     target: isClient
       ? // Only our client bundle will target the web as a runtime.
-        'web'
+      'web'
       : // Any other bundle must be targetting node as a runtime.
-        'node',
+      'node',
 
     // Ensure that webpack polyfills the following node features for use
     // within any bundles that are targetting node as a runtime. This will be
@@ -378,6 +379,24 @@ export default function webpackConfigFactory(buildOptions) {
             allChunks: true,
           })
       ),
+
+      new ImageminPlugin({
+        disable: isDev || isServer, // Disable during development
+        gifsicle: {
+          interlaced: false,
+        },
+        optipng: {
+          optimizationLevel: 7,
+        },
+        pngquant: {
+          quality: '65-90',
+          speed: 4,
+        },
+        mozjpeg: {
+          progressive: true,
+          quality: 65,
+        },
+      }),
 
       // -----------------------------------------------------------------------
       // START: HAPPY PACK PLUGINS
@@ -620,6 +639,20 @@ export default function webpackConfigFactory(buildOptions) {
               )
             ),
 
+            ifClient({
+              test: /\.(jpe?g|png)$/i,
+              loader: 'responsive-loader',
+              options: {
+                sizes: [300, 600, 1200],
+                placeholder: true,
+                placeholderSize: 50,
+                format: 'png',
+
+                // If you want to enable sharp support:
+                adapter: require('responsive-loader/sharp'),
+              },
+            }),
+
             // MODERNIZR
             // This allows you to do feature detection.
             // @see https://modernizr.com/docs
@@ -639,7 +672,7 @@ export default function webpackConfigFactory(buildOptions) {
             // server.
             ifElse(isClient || isServer)(() => ({
               loader: 'file-loader',
-              exclude: [/\.js$/, /\.html$/, /\.json$/],
+              exclude: [/\.js$/, /\.html$/, /\.json$/, /\.(jpe?g|png)$/i],
               query: {
                 // What is the web path that the client bundle will be served from?
                 // The same value has to be used for both the client and the
@@ -647,12 +680,12 @@ export default function webpackConfigFactory(buildOptions) {
                 // paths used on the client.
                 publicPath: isDev
                   ? // When running in dev mode the client bundle runs on a
-                    // seperate port so we need to put an absolute path here.
-                    `http://${config('host')}:${config('clientDevServerPort')}${config(
-                      'bundles.client.webPath'
-                    )}`
+                  // seperate port so we need to put an absolute path here.
+              `http://${config('host')}:${config('clientDevServerPort')}${config(
+                'bundles.client.webPath'
+              )}`
                   : // Otherwise we just use the configured web path for the client.
-                    config('bundles.client.webPath'),
+                  config('bundles.client.webPath'),
                 // We only emit files when building a web bundle, for the server
                 // bundle we only care about the file loader being able to create
                 // the correct asset URLs.

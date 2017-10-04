@@ -5,7 +5,7 @@ import Info from 'Equilab/Info';
 class FrontPage extends Component {
   render() {
     return (
-      <div>
+      <div className="front-page">
         {/*  Hero */}
         <Info />
         {/*  Reviews */}
