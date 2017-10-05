@@ -386,7 +386,7 @@ export default function webpackConfigFactory(buildOptions) {
           interlaced: false,
         },
         optipng: {
-          optimizationLevel: 7,
+          optimizationLevel: 3,
         },
         pngquant: {
           quality: '65-90',
