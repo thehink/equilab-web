@@ -26,4 +26,4 @@ const defaultMessages = globSync(filePattern)
 
 mkdirpSync(outputLanguageDataDir);
 
-fs.writeFileSync(outputLanguageDataDir + 'en.json', JSON.stringify(defaultMessages, null, 2));
+fs.writeFileSync(outputLanguageDataDir + 'sv.json', JSON.stringify(defaultMessages, null, 2));
