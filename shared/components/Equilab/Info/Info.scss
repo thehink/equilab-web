@@ -1,46 +1,71 @@
+@import "~styles/variables";
+
 
 .wrapper {
-  background-image: url('assets/images/horse.png?size=1024');
+  background-image: url('assets/images/horse.png?size=1600');
+  background-position: 50%;
   background-size: cover;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+
+  .max-width{
+    display: flex;
+    flex-wrap: wrap;
+    margin:  0 auto;
+    align-items: center;
+    justify-content: center;
+    max-width: 1440px;
+  }
+
 }
 
 .min-height{
   min-height: 500px;
 }
 
+.image-col{
+  display: flex;
+
+  @include media-breakpoint-down(xs) {
+    display: none;
+  }
+}
+
 
 .image-wrapper {
   @extend .min-height;
-  display: block;
+  display: inline-block;
   position: relative;
   margin: 0 auto;
-  max-width: 300px;
-  clear: both;
 }
 
 .image {
-  max-width: 279px;
-  position: absolute;
+  max-width: 340px;
+
+  @include media-breakpoint-down(md) {
+    max-width: 280px;
+    margin-bottom: 80px;
+  }
 }
 
 .image1 {
   @extend .image;
-  top: 91px;
+  position: absolute;
+  margin-top: 20%;
+  margin-left: -20%;
 }
 
 .image2 {
   @extend .image;
-  left: 91px;
+  position: relative;
+  margin-left: 20%;
 }
 
 .subtitle span {
   font-size: 28px;
   color: #000000;
   letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 .description span {
@@ -50,3 +75,13 @@
   line-height: 32px;
 }
 
+.sign-up-button {
+  color: $equi-orange;
+  font-size: 24px;
+  color: #ED6C44;
+  letter-spacing: 0.8px;
+  border: 3px solid $equi-orange;
+  border-radius: 100px;
+  background: #ffffff;
+  padding: 12px 42px;
+}
