@@ -44,7 +44,8 @@
     ],
     "moduleNameMapper": {
       "^.*[.](css|CSS|scss)$": "<rootDir>/internal/jest/styleMock.js",
-      "^.*[.](gif|ttf|eot|svg|png|jpg)$": "<rootDir>/internal/jest/assetMock.js"
+      "^.*[.](gif|ttf|eot|svg)$": "<rootDir>/internal/jest/assetMock.js",
+      "^.*[.](png|jpg)$": "<rootDir>/internal/jest/imgMock.js"
     }
   },
   "repository": {

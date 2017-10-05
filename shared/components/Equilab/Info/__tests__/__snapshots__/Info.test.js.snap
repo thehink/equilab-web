@@ -5,51 +5,71 @@ exports[`<Info /> renders 1`] = `
   className="row undefined"
 >
   <div
-    className="col"
+    className="undefined"
   >
-    <div>
-      <PreloadImage
-        alt="mobile"
-        image="/asset/mock"
-      />
-      <PreloadImage
-        alt="mobile"
-        image="/asset/mock"
-      />
+    <div
+      className="hidden-xs-up col-lg-6 col-md-12 undefined"
+    >
+      <div>
+        <PreloadImage
+          alt="mobile"
+          image={
+            Object {
+              "height": 0,
+              "placeholder": "",
+              "src": "",
+              "srcSet": "",
+              "width": 0,
+            }
+          }
+        />
+        <PreloadImage
+          alt="mobile"
+          image={
+            Object {
+              "height": 0,
+              "placeholder": "",
+              "src": "",
+              "srcSet": "",
+              "width": 0,
+            }
+          }
+        />
+      </div>
     </div>
-  </div>
-  <div
-    className="col undefined"
-  >
-    <FormattedMessage
-      defaultMessage="Vad är Equilab?"
-      id="Info.what"
-      values={Object {}}
-    />
-    <p>
-      <FormattedMessage
-        defaultMessage="En bra App!"
-        id="Info.what_sub"
-        values={Object {}}
-      />
-    </p>
-    <p>
-      <FormattedMessage
-        defaultMessage="Projektet med hästar är inte så jättekul att hålla på med när man är stressad och hellre gör annat. Men det visade sig fungera hyffsat bra och blev nästan lite kul när jag väl satte igång med det. Tänka sig hur det kan bli när man är röksugen och frustrerad."
-        id="Info.what_info"
-        values={Object {}}
-      />
-    </p>
-    <button
-      className="btn btn-primary"
-      type="button"
+    <div
+      className="col-lg-6 col-md-12 undefined"
     >
       <FormattedMessage
-        defaultMessage="Sign up!"
-        id="Info.sign_up"
+        defaultMessage="Vad är Equilab?"
+        id="Info.what"
         values={Object {}}
       />
-    </button>
+      <p>
+        <FormattedMessage
+          defaultMessage="En bra App!"
+          id="Info.what_sub"
+          values={Object {}}
+        />
+      </p>
+      <p>
+        <FormattedMessage
+          defaultMessage="Projektet med hästar är inte så jättekul att hålla på med när man är stressad och hellre gör annat. Men det visade sig fungera hyffsat bra och blev nästan lite kul när jag väl satte igång med det. Tänka sig hur det kan bli när man är röksugen och frustrerad."
+          id="Info.what_info"
+          values={Object {}}
+        />
+      </p>
+      <button
+        className="btn undefined"
+        type="button"
+      >
+        <FormattedMessage
+          defaultMessage="Sign up!"
+          id="Info.sign_up"
+          values={Object {}}
+        />
+      </button>
+    </div>
   </div>
 </div>
 `;
