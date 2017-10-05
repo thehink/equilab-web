@@ -19,9 +19,16 @@
 // 	src: url("./fonts/gravur-condensed-light.otf") format("opentype")
 // }
 
-// @font-face {
-// 	font-family: "gravur-condensed-regular";
-// 	font-style: normal;
-// 	font-weight: normal;
-// 	src: url("./fonts/gravur-condensed-regular.otf") format("opentype")
-// }
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: normal;
+	src: url("~assets/fonts/roboto/Roboto-Regular.ttf") format('truetype')
+}
+
+@font-face {
+	font-family: "Roboto";
+	font-style: bold;
+	font-weight: bold;
+	src: url("~assets/fonts/roboto/Roboto-Bold.ttf") format('truetype')
+}
