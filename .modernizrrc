@@ -3,6 +3,7 @@
   "options": [],
   "feature-detects": [
     "elem/picture",
-    "requestanimationframe"
+    "requestanimationframe",
+    "intl"
   ]
 }

@@ -13,7 +13,7 @@ import sv from 'react-intl/locale-data/sv';
 
 import createStore from 'store';
 
-import './polyfills';
+import polyfills from './polyfills';
 
 import ReactHotLoader from './components/ReactHotLoader';
 import App from '../shared/components/Equilab';
@@ -82,7 +82,7 @@ function renderApp(TheApp) {
 }
 
 // Execute the first render of our app.
-renderApp(App);
+polyfills().then(() => renderApp(App));
 
 // This registers our service worker for asset caching and offline support.
 // Keep this as the last item, just in case the code execution failed (thanks
