@@ -381,12 +381,13 @@ export default function webpackConfigFactory(buildOptions) {
       ),
 
       new ImageminPlugin({
+        test: /\.(jpe?g|png)$/i,
         disable: isDev || isServer, // Disable during development
         gifsicle: {
           interlaced: false,
         },
         optipng: {
-          optimizationLevel: 3,
+          optimizationLevel: 2,
         },
         pngquant: {
           quality: '65-90',
@@ -395,6 +396,9 @@ export default function webpackConfigFactory(buildOptions) {
         mozjpeg: {
           progressive: true,
           quality: 65,
+        },
+        webp: {
+          quality: 85,
         },
       }),
 

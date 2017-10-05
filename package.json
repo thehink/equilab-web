@@ -66,6 +66,7 @@
   },
   "homepage": "https://github.com/thehink/equilab-web#readme",
   "dependencies": {
+    "accept-webp": "^1.4.0",
     "app-root-dir": "1.0.2",
     "bootstrap": "4.0.0-beta",
     "colors": "1.1.2",
@@ -141,7 +142,7 @@
     "html-webpack-plugin": "^2.30.1",
     "husky": "0.14.3",
     "image-webpack-loader": "^3.4.2",
-    "imagemin-webpack-plugin": "^1.5.2",
+    "imagemin-webpack-plugin": "https://github.com/thehink/imagemin-webpack-plugin.git#f55d7571c5c1b238fc623bcbf4d1fbdc6266b89f",
     "jest": "^21.0.2",
     "lint-staged": "4.0.2",
     "md5": "2.2.1",

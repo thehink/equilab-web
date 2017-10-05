@@ -10,6 +10,12 @@ abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
 
+accept-webp@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/accept-webp/-/accept-webp-1.4.0.tgz#fa3678e26cbc427e25962713d7ffded5e44a8dd5"
+  dependencies:
+    vary "^1.0.0"
+
 accepts@~1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/accepts/-/accepts-1.3.3.tgz#c3ca7434938648c3e0d9c1e328dd68b622c284ca"
@@ -4245,9 +4251,9 @@ imagemin-webp@^4.0.0:
     exec-buffer "^3.0.0"
     is-cwebp-readable "^1.0.0"
 
-imagemin-webpack-plugin@^1.5.2:
+"imagemin-webpack-plugin@https://github.com/thehink/imagemin-webpack-plugin.git#f55d7571c5c1b238fc623bcbf4d1fbdc6266b89f":
   version "1.5.2"
-  resolved "https://registry.yarnpkg.com/imagemin-webpack-plugin/-/imagemin-webpack-plugin-1.5.2.tgz#fd6643c8f329e9197a0ff4b681079b4f9324935b"
+  resolved "https://github.com/thehink/imagemin-webpack-plugin.git#f55d7571c5c1b238fc623bcbf4d1fbdc6266b89f"
   dependencies:
     async-throttle "^1.1.0"
     babel-runtime "^6.18.0"
@@ -4257,6 +4263,7 @@ imagemin-webpack-plugin@^1.5.2:
     imagemin-optipng "^5.1.0"
     imagemin-pngquant "^5.0.1"
     imagemin-svgo "^5.2.2"
+    imagemin-webp "^4.0.0"
     lodash.map "^4.6.0"
     minimatch "^3.0.4"
     webpack-sources "^1.0.1"
@@ -8686,6 +8693,10 @@ validate-npm-package-license@^3.0.1:
 value-equal@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-0.4.0.tgz#c5bdd2f54ee093c04839d71ce2e4758a6890abc7"
+
+vary@^1.0.0:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
 
 vary@~1.1.1:
   version "1.1.1"
