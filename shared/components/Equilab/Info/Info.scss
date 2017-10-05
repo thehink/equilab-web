@@ -1,3 +1,52 @@
 
 .wrapper {
+  background-image: url('assets/images/horse.png?size=1024');
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.min-height{
+  min-height: 500px;
+}
+
+
+.image-wrapper {
+  @extend .min-height;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  max-width: 300px;
+  clear: both;
+}
+
+.image {
+  max-width: 279px;
+  position: absolute;
+}
+
+.image1 {
+  @extend .image;
+  top: 91px;
+}
+
+.image2 {
+  @extend .image;
+  left: 91px;
+}
+
+.subtitle span {
+  font-size: 28px;
+  color: #000000;
+  letter-spacing: 3px;
+}
+
+.description span {
+  font-size: 18px;
+  color: #000000;
+  letter-spacing: 1.5px;
+  line-height: 32px;
+}
+

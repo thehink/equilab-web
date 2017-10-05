@@ -639,7 +639,7 @@ export default function webpackConfigFactory(buildOptions) {
               )
             ),
 
-            ifClient({
+            {
               test: /\.(jpe?g|png)$/i,
               loader: 'responsive-loader',
               options: {
@@ -651,7 +651,7 @@ export default function webpackConfigFactory(buildOptions) {
                 // If you want to enable sharp support:
                 adapter: require('responsive-loader/sharp'),
               },
-            }),
+            },
 
             // MODERNIZR
             // This allows you to do feature detection.
