@@ -165,7 +165,7 @@ export default function webpackConfigFactory(buildOptions) {
           'bundles.client.webPath'
         )}`,
         // Otherwise we expect our bundled client to be served from this path.
-        bundleConfig.webPath
+        config('bundles.client.webPath')
       ),
     },
 
@@ -672,7 +672,7 @@ export default function webpackConfigFactory(buildOptions) {
             // server.
             ifElse(isClient || isServer)(() => ({
               loader: 'file-loader',
-              exclude: [/\.js$/, /\.html$/, /\.json$/, /\.(jpe?g|png)$/i],
+              exclude: [/\.js$/, /\.html$/, /\.json$/],
               query: {
                 // What is the web path that the client bundle will be served from?
                 // The same value has to be used for both the client and the
