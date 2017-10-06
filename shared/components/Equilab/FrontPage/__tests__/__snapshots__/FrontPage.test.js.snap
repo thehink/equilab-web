@@ -5,6 +5,7 @@ exports[`<FrontPage /> renders 1`] = `
   className="front-page"
 >
   <Info />
+  <Testimonials />
   <AboveFooter />
   FrontPage
 </div>
