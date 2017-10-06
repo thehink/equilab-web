@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import styles from './Card.scss';
 
-const Card = props => (
+const Card = ({ description, name, image }) => (
   <div className={styles.wrapper}>
     <section className={styles.description}>
-    ”Superbra app!!! Jag kan äntligen tillfredställa min optinojja när jag tränar min 10 miljonerhäst”
+      {description}
     </section>
     <section className={styles.name}>
-    Rutger Silverhjelm, Proffsryttare
+      {name}
     </section>
     <section className={styles.image}>
       <img />
@@ -17,8 +17,14 @@ const Card = props => (
   </div>
 );
 
-Card.propTypes = {
+Card.defaultProps = {
+  image: '',
+};
 
+Card.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string,
 };
 
 export default Card;
