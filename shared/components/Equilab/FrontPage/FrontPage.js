@@ -12,7 +12,6 @@ class FrontPage extends Component {
         <Info />
         <Testimonials />
         <AboveFooter />
-        FrontPage
       </div>
     );
   }
