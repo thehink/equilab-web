@@ -76,12 +76,13 @@
 }
 
 .sign-up-button {
-  color: $equi-orange;
-  font-size: 24px;
-  color: #ED6C44;
-  letter-spacing: 0.8px;
-  border: 3px solid $equi-orange;
-  border-radius: 100px;
   background: #ffffff;
+  border-radius: 100px;
+  border: 3px solid $equi-orange;
+  color: #ED6C44;
+  color: $equi-orange;
+  cursor: pointer;
+  font-size: 24px;
+  letter-spacing: 0.8px;
   padding: 12px 42px;
 }
