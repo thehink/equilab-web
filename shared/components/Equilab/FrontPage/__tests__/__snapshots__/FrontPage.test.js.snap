@@ -7,6 +7,5 @@ exports[`<FrontPage /> renders 1`] = `
   <Info />
   <Testimonials />
   <AboveFooter />
-  FrontPage
 </div>
 `;
