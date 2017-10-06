@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import BackgroundImage from 'react-background-image-loader';
+// import BackgroundImage from 'react-background-image-loader';
 
-import bgImage from 'assets/images/horse.png?size=1600';
+// import bgImage from 'assets/images/horse.png?size=1600';
 
 import DownloadBar from 'Equilab/DownloadBar';
 
@@ -13,11 +13,7 @@ import styles from './AboveFooter.scss';
 class AboveFooter extends Component {
   render() {
     return (
-      <BackgroundImage
-        src={bgImage.src}
-        placeholder={bgImage.placeholder}
-        className={`row ${styles.wrapper}`}
-      >
+      <div className={`row ${styles.wrapper}`}>
         <div className={styles.maxWidth}>
           <FormattedMessage id={'AboveFooter.title'} defaultMessage={'Häst App'}>
             {txt => <h2 className={styles.title}>{txt}</h2>}
@@ -32,7 +28,7 @@ class AboveFooter extends Component {
           </p>
           <DownloadBar />
         </div>
-      </BackgroundImage>
+      </div>
     );
   }
 }
