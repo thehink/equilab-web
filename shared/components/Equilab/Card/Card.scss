@@ -1,0 +1,47 @@
+@import "~styles/variables";
+
+.wrapper {
+  background: #ffffff;
+  box-shadow: 10px 10px 26px 0 rgba(0,0,0,0.29);
+  border-radius: 20px;
+  padding: 40px;
+  margin: 0 20px;
+  height: 80%;
+  width: 370px;
+  max-height: 533px;
+}
+
+
+.section {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $equi-gray;
+  margin-bottom: 20px;
+}
+
+.description {
+  @extend .section;
+  font-size: 18px;
+  color: #000000;
+  letter-spacing: 1.5px;
+  line-height: 32px;
+}
+
+.name {
+  @extend .section;
+  font-size: 24px;
+  color: #000000;
+  letter-spacing: 1px;
+}
+
+.image {
+  @extend .section;
+  display: flex;
+  justify-content: center;
+
+  img {
+    background: $equi-gray;
+    height: 140px;
+    width: 140px;
+    border-radius: 140px;
+  }
+}

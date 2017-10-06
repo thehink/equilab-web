@@ -1,0 +1,21 @@
+
+
+.wrapper {
+  background-image: url('assets/images/testi.png?size=1600');
+  background-position: 50%;
+  background-size: cover;
+  min-height: 100vh;
+  overflow: hidden;
+
+
+  .max-width{
+    align-items: center;
+    display: flex;
+    flex-wrap: no-wrap;
+    flex-shrink: 0;
+    justify-content: center;
+    margin:  0 auto;
+    max-width: 1440px;
+  }
+
+}
