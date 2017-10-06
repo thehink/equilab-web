@@ -9,11 +9,11 @@
 
 
   .max-width{
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
-    margin:  0 auto;
-    align-items: center;
     justify-content: center;
+    margin:  0 auto;
     max-width: 1440px;
   }
 
@@ -35,8 +35,8 @@
 .image-wrapper {
   @extend .min-height;
   display: inline-block;
-  position: relative;
   margin: 0 auto;
+  position: relative;
 }
 
 .image {
@@ -50,27 +50,27 @@
 
 .image1 {
   @extend .image;
-  position: absolute;
-  margin-top: 20%;
   margin-left: -20%;
+  margin-top: 20%;
+  position: absolute;
 }
 
 .image2 {
   @extend .image;
-  position: relative;
   margin-left: 20%;
+  position: relative;
 }
 
 .subtitle span {
-  font-size: 28px;
   color: #000000;
+  font-size: 28px;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
 
 .description span {
-  font-size: 18px;
   color: #000000;
+  font-size: 18px;
   letter-spacing: 1.5px;
   line-height: 32px;
 }

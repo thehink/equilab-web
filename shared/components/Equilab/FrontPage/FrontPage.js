@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Info from 'Equilab/Info';
+import AboveFooter from 'Equilab/AboveFooter';
 
 class FrontPage extends Component {
   render() {
@@ -9,7 +10,7 @@ class FrontPage extends Component {
         {/*  Hero */}
         <Info />
         {/*  Reviews */}
-        {/*  AboveFooter */}
+        <AboveFooter />
         FrontPage
       </div>
     );

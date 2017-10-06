@@ -6,30 +6,30 @@ import image from 'assets/images/mobile.png';
 
 import PreloadImage from 'Equilab/PreloadImage';
 
-import style from './Info.scss';
+import styles from './Info.scss';
 
 class Info extends Component {
   render() {
     const { state } = this;
 
     return (
-      <div className={`row ${style.wrapper}`}>
-        <div className={`${style.maxWidth}`}>
-          <div className={`hidden-xs-up col-lg-6 col-md-12 ${style.imageCol}`}>
-            <div className={style.imageWrapper}>
-              <PreloadImage image={image} alt="mobile" className={style.image1} />
-              <PreloadImage image={image} alt="mobile" className={style.image2} />
+      <div className={`row ${styles.wrapper}`}>
+        <div className={`${styles.maxWidth}`}>
+          <div className={`hidden-xs-up col-lg-6 col-md-12 ${styles.imageCol}`}>
+            <div className={styles.imageWrapper}>
+              <PreloadImage image={image} alt="mobile" className={styles.image1} />
+              <PreloadImage image={image} alt="mobile" className={styles.image2} />
             </div>
           </div>
 
-          <div className={`col-lg-6 col-md-12 ${style.minHeight}`}>
+          <div className={`col-lg-6 col-md-12 ${styles.minHeight}`}>
             <FormattedMessage id={'Info.what'} defaultMessage={'Vad är Equilab?'}>
               {txt => <h2>{txt}</h2>}
             </FormattedMessage>
-            <p className={style.subtitle}>
+            <p className={styles.subtitle}>
               <FormattedMessage id={'Info.what_sub'} defaultMessage={'En bra App!'} />
             </p>
-            <p className={style.description}>
+            <p className={styles.description}>
               <FormattedMessage
                 id={'Info.what_info'}
                 defaultMessage={
@@ -38,7 +38,7 @@ class Info extends Component {
               />
             </p>
 
-            <button type="button" className={`btn ${style.signUpButton}`}>
+            <button type="button" className={`btn ${styles.signUpButton}`}>
               <FormattedMessage id={'Info.sign_up'} defaultMessage={'Sign up!'} />
             </button>
           </div>

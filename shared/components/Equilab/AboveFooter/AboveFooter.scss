@@ -1,0 +1,33 @@
+
+
+.wrapper {
+  align-items: center;
+  background-image: url('assets/images/horse.png?size=1600');
+  background-position: 50%;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 100vh;
+
+  .max-width{
+    max-width: 1440px;
+  }
+
+}
+
+.title {
+  text-align: center;
+}
+
+.description {
+  color: #000000;
+  font-size: 32px;
+  font-style: lighter;
+  letter-spacing: 2px;
+  line-height: 45px;
+  margin-top: 48px;
+  max-width: 1000px;
+  text-align: center;
+}
+
