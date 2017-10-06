@@ -78,8 +78,7 @@ const values = {
   htmlPage: {
     titleTemplate: 'Equilab - %s',
     defaultTitle: 'Equilab',
-    description:
-      'A horse site',
+    description: 'A horse site',
   },
 
   // Content Security Policy (CSP)
@@ -89,7 +88,7 @@ const values = {
     connectSrc: [],
     defaultSrc: [],
     fontSrc: ['fonts.googleapis.com/css', 'fonts.gstatic.com'],
-    imgSrc: [],
+    imgSrc: ['data:'],
     mediaSrc: [],
     manifestSrc: [],
     objectSrc: [],

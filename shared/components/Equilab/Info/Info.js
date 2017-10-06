@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { FormattedMessage } from 'react-intl';
 
 import image from 'assets/images/mobile.png';
