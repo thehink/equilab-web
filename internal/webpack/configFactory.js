@@ -653,7 +653,7 @@ export default function webpackConfigFactory(buildOptions) {
                 format: 'png',
 
                 // If you want to enable sharp support:
-                adapter: require('responsive-loader/sharp'),
+                // adapter: require('responsive-loader/sharp'),
               },
             },
 
