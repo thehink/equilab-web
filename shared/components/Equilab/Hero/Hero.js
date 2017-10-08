@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import DownloadBar from 'Equilab/DownloadBar';
 import styles from './Hero.scss';
 
 export default class Hero extends Component {
@@ -9,6 +10,7 @@ export default class Hero extends Component {
         <div className={`${styles.maxWidth}`}>
           <h2 className={`${styles.title}`}>HÄSTEN I FOKUS</h2>
           <p className={`${styles.content}`}>Massa saker här</p>
+          <DownloadBar />
         </div>
       </div>
     );
