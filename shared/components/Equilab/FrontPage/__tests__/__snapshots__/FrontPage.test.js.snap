@@ -4,6 +4,7 @@ exports[`<FrontPage /> renders 1`] = `
 <div
   className="front-page"
 >
+  <Hero />
   <Info />
   <Testimonials />
   <AboveFooter />
