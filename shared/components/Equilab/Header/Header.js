@@ -6,13 +6,13 @@ import styles from './Header.scss';
 class Header extends Component {
   renderLinks() {
     return [
-      <li>
+      <li key="faq">
         <Link to="#">FAQ</Link>
       </li>,
-      <li>
+      <li key="hiring">
         <Link to="#">Hiring</Link>
       </li>,
-      <li>
+      <li key="about">
         <Link to="#">About</Link>
       </li>,
     ];
@@ -20,6 +20,7 @@ class Header extends Component {
   render() {
     return (
       <div className={`${styles.wrapper}`}>
+        <div className={`${styles.headerImg}`} />
         <nav className="navbar">
           <ul className={`nav navbar-nav ml-auto ${styles.headerLinks}`}>{this.renderLinks()}</ul>
         </nav>
