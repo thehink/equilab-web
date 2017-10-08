@@ -9,7 +9,7 @@ export default class Hero extends Component {
       <div className={`row ${styles.wrapper}`}>
         <div className={`${styles.maxWidth}`}>
           <h2 className={`${styles.title}`}>HÄSTEN I FOKUS</h2>
-          <p className={`${styles.content}`}>Massa saker här</p>
+          <p className={`${styles.content}`}>Här har vi en massa saker</p>
           <DownloadBar />
         </div>
       </div>
