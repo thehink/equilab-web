@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import styles from './Header.scss';
+
 class Header extends Component {
   renderLinks() {
-    return (
-      <div>
-        <li className="nav-item">
-          <Link to="#" className="nav-link">
-            FAQ
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="#" className="nav-link">
-            Hiring
-          </Link>
-        </li>
-      </div>
-    );
+    return [
+      <li>
+        <Link to="#">FAQ</Link>
+      </li>,
+      <li>
+        <Link to="#">Hiring</Link>
+      </li>,
+      <li>
+        <Link to="#">About</Link>
+      </li>,
+    ];
   }
   render() {
     return (
-      <nav className="navbar navbar-light">
-        <ul className="nav navbar-nav ml-auto">{this.renderLinks()}</ul>
-      </nav>
+      <div className={`${styles.wrapper}`}>
+        <nav className="navbar">
+          <ul className={`nav navbar-nav ml-auto ${styles.headerLinks}`}>{this.renderLinks()}</ul>
+        </nav>
+      </div>
     );
   }
 }
