@@ -11,6 +11,10 @@ export default class Hero extends Component {
           <h2 className={`${styles.title}`}>MORE RIDING LESS WORRY</h2>
           <p className={`${styles.content}`}>Equilab, used by more than 30 000 riders worldwide!</p>
           <DownloadBar />
+          <div className={`${styles.arrow}`}>
+            <p>NOT CONVINCED YET?</p>
+            <div className={`${styles.arrowImg}`} />
+          </div>
         </div>
       </div>
     );
