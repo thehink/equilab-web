@@ -23,11 +23,11 @@ class Info extends Component {
           </div>
 
           <div className={`col-lg-6 col-md-12 ${styles.minHeight}`}>
-            <FormattedMessage id={'Info.what'} defaultMessage={'TOTAL CONTROL'}>
+            <FormattedMessage id={'Info.what'} defaultMessage={'WHY EQUILAB?'}>
               {txt => <h2>{txt}</h2>}
             </FormattedMessage>
             <p className={styles.subtitle}>
-              <FormattedMessage id={'Info.what_sub'} defaultMessage={'En bra App!'} />
+              <FormattedMessage id={'Info.what_sub'} defaultMessage={'TOTAL CONTROL'} />
             </p>
             <p className={styles.description}>
               <FormattedMessage
