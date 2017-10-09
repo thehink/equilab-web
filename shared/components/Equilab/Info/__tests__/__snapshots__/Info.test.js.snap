@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Info /> renders 1`] = `
-<div
+<_
   className="row undefined"
+  name="info"
 >
   <div
     className="undefined"
@@ -71,5 +72,5 @@ exports[`<Info /> renders 1`] = `
       </button>
     </div>
   </div>
-</div>
+</_>
 `;
