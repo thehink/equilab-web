@@ -7,13 +7,13 @@ class Header extends Component {
   renderLinks() {
     return [
       <li key="faq">
-        <Link to="#">FAQ</Link>
+        <Link to="#">HOME</Link>
       </li>,
       <li key="hiring">
-        <Link to="#">Hiring</Link>
+        <Link to="#">F.A.Q</Link>
       </li>,
       <li key="about">
-        <Link to="#">About</Link>
+        <Link to="#">HIRING</Link>
       </li>,
     ];
   }
