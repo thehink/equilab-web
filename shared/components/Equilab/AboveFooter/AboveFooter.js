@@ -15,14 +15,14 @@ class AboveFooter extends Component {
     return (
       <div className={`row ${styles.wrapper}`}>
         <div className={styles.maxWidth}>
-          <FormattedMessage id={'AboveFooter.title'} defaultMessage={'Häst App'}>
+          <FormattedMessage id={'AboveFooter.title'} defaultMessage={'Try it out'}>
             {txt => <h2 className={styles.title}>{txt}</h2>}
           </FormattedMessage>
           <p className={styles.description}>
             <FormattedMessage
               id={'AboveFooter.description'}
               defaultMessage={
-                'Projektet med hästar är inte så jättekul att hålla på med när man är stressad och hellre gör annat'
+                'If you are still not convinced you can try it out for yourself right now, completely free!'
               }
             />
           </p>

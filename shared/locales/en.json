@@ -1,5 +1,8 @@
 {
-  "Info.bootstrao": "Bootstrap works!",
-  "Info.what": "What is equilab?",
-  "Info.what_sub": "A good APP!"
+  "AboveFooter.title": "Try it out",
+  "AboveFooter.description": "If you are still not convinced you can try it out for yourself right now, completely free!",
+  "Info.what": "TOTAL CONTROL",
+  "Info.what_sub": "En bra App!",
+  "Info.what_info": "Automatically collect information about your training by turning on Equilab and keeping the phone in your pocket while riding. Afterwards you can analyze your training by looking at your performance, energy consumption, gait distrubution, intensity jumps, intensity,stride, beat, pace, distance, speed,surface hardness, nr of jumps, etc....",
+  "Info.sign_up": "Sign up!"
 }

@@ -1,0 +1,58 @@
+
+
+.wrapper {
+  background-image: url('assets/images/map-footer.png?size=1600');
+  background-position: 50%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.contact {
+  margin: 50px 78px 30px 78px;
+
+  h3{
+    font-family: Roboto;
+    text-transform: uppercase;
+    font-size: 32px;
+    color: #000000;
+    letter-spacing: 3.43px;
+    margin-bottom: 24px;
+  }
+
+  .email {
+    font-family: "Roboto-Light";
+    font-size: 32px;
+    color: #000000;
+    letter-spacing: 2px;
+    line-height: 45px;
+  }
+}
+
+
+.bottom-bar {
+  display: flex;
+  margin: 0 78px 50px 78px;
+  align-items: center;
+
+  .link {
+    margin-right: 40px;
+    height: 80px;
+    width: 80px;
+  }
+
+  .facebook {
+    @extend .link;
+  }
+
+  .instagram {
+    @extend .link;
+  }
+
+  .logo {
+    margin-left: auto;
+    height: 64px;
+    width: 64px;
+  }
+}
