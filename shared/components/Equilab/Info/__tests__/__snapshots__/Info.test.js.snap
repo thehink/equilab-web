@@ -41,7 +41,7 @@ exports[`<Info /> renders 1`] = `
       className="col-lg-6 col-md-12 undefined"
     >
       <FormattedMessage
-        defaultMessage="Vad är Equilab?"
+        defaultMessage="TOTAL CONTROL"
         id="Info.what"
         values={Object {}}
       />
@@ -54,7 +54,7 @@ exports[`<Info /> renders 1`] = `
       </p>
       <p>
         <FormattedMessage
-          defaultMessage="Projektet med hästar är inte så jättekul att hålla på med när man är stressad och hellre gör annat. Men det visade sig fungera hyffsat bra och blev nästan lite kul när jag väl satte igång med det. Tänka sig hur det kan bli när man är röksugen och frustrerad."
+          defaultMessage="Automatically collect information about your training by turning on Equilab and keeping the phone in your pocket while riding. Afterwards you can analyze your training by looking at your performance, energy consumption, gait distrubution, intensity jumps, intensity,stride, beat, pace, distance, speed,surface hardness, nr of jumps, etc...."
           id="Info.what_info"
           values={Object {}}
         />
