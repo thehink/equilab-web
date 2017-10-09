@@ -11,7 +11,7 @@ const Card = ({ description, name, sub, image }) => (
       <span className={styles.sub}>{sub}</span>
     </section>
     <section className={styles.image}>
-      <img srcSet={image.srcSet} src={image.src} />
+      <img srcSet={image.srcSet} alt={`${name}`} src={image.src} />
     </section>
   </div>
 );
