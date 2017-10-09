@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Element } from 'react-scroll';
 
 import image1 from 'assets/images/mobile2.png';
 import image2 from 'assets/images/mobile1.png';
@@ -13,7 +14,7 @@ class Info extends Component {
     const { state } = this;
 
     return (
-      <div className={`row ${styles.wrapper}`}>
+      <Element name="info" className={`row ${styles.wrapper}`}>
         <div className={`${styles.maxWidth}`}>
           <div className={`hidden-xs-up col-lg-6 col-md-12 ${styles.imageCol}`}>
             <div className={styles.imageWrapper}>
@@ -43,7 +44,7 @@ class Info extends Component {
             </button>
           </div>
         </div>
-      </div>
+      </Element>
     );
   }
 }

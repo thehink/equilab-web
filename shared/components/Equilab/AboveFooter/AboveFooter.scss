@@ -1,4 +1,4 @@
-
+@import "~styles/variables";
 
 .wrapper {
   margin-top: 40px;
@@ -10,6 +10,10 @@
   flex-wrap: wrap;
   justify-content: center;
   min-height: 70vh;
+
+  @include media-breakpoint-down(xs) {
+    min-height: 100vh;
+  }
 
   .max-width{
     max-width: 1440px;

@@ -1,4 +1,4 @@
-
+@import "~styles/variables";
 
 .wrapper {
   background-image: url('assets/images/testi.png?size=1600');
@@ -6,6 +6,10 @@
   background-size: cover;
   min-height: 70vh;
   overflow: hidden;
+
+  @include media-breakpoint-down(xs) {
+    height: 100vh;
+  }
 
   .h2-wrapper{
     width: 100%;
@@ -15,11 +19,22 @@
     justify-content: center;
     height: 170px;
 
+    @include media-breakpoint-down(xs) {
+      height: 80px;
+    }
+
     h2 {
       display: inline-block;
       text-align: center;
       width: 100%;
       margin: 0;
+      font-size: 48px;
+      color: #000000;
+      letter-spacing: 2px;
+
+      @include media-breakpoint-down(xs) {
+        font-size: 24px;
+      }
     }
   }
 

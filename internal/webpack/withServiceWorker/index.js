@@ -44,7 +44,7 @@ export default function withServiceWorker(webpackConfig, bundleConfig) {
         config,
         ClientConfig,
       },
-    }),
+    })
   );
 
   // We use the offline-plugin to generate the service worker.  It also
@@ -66,6 +66,11 @@ export default function withServiceWorker(webpackConfig, bundleConfig) {
   // We will only include the service worker if enabled in config.
   webpackConfig.plugins.push(
     new OfflinePlugin({
+      caches: {
+        main: ['index-*.js', 'index-*.css', '*.ttf', 'offline.html'],
+        additional: [':externals:'],
+        optional: [':rest:'],
+      },
       // Setting this value lets the plugin know where our generated client
       // assets will be served from.
       // e.g. /client/
@@ -97,7 +102,9 @@ export default function withServiceWorker(webpackConfig, bundleConfig) {
         // of injecting all of our client scripts into the body.
         // Please see the HtmlWebpackPlugin configuration above for more
         // information on this page.
-        navigateFallbackURL: `${bundleConfig.webPath}${config('serviceWorker.offlinePageFileName')}`,
+        navigateFallbackURL: `${bundleConfig.webPath}${config(
+          'serviceWorker.offlinePageFileName'
+        )}`,
       },
       // According to the Mozilla docs, AppCache is considered deprecated.
       // @see https://mzl.la/1pOZ5wF
@@ -109,14 +116,15 @@ export default function withServiceWorker(webpackConfig, bundleConfig) {
       // Add the polyfill io script as an external if it is enabled.
       externals: (config('polyfillIO.enabled')
         ? [`${config('polyfillIO.url')}?features=${config('polyfillIO.features').join(',')}`]
-        : [])
+        : []
+      )
         // Add any included public folder assets.
         .concat(
           config('serviceWorker.includePublicAssets').reduce((acc, cur) => {
             const publicAssetPathGlob = path.resolve(
               appRootDir.get(),
               config('publicAssetsPath'),
-              cur,
+              cur
             );
             const publicFileWebPaths = acc.concat(
               // First get all the matching public folder files.
@@ -126,17 +134,17 @@ export default function withServiceWorker(webpackConfig, bundleConfig) {
                 .map(publicFile =>
                   path.relative(
                     path.resolve(appRootDir.get(), config('publicAssetsPath')),
-                    publicFile,
-                  ),
+                    publicFile
+                  )
                 )
                 // Add the leading "/" indicating the file is being hosted
                 // off the root of the application.
-                .map(relativePath => `/${relativePath}`),
+                .map(relativePath => `/${relativePath}`)
             );
             return publicFileWebPaths;
-          }, []),
+          }, [])
         ),
-    }),
+    })
   );
 
   return webpackConfig;
