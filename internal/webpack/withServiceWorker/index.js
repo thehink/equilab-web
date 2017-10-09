@@ -68,8 +68,8 @@ export default function withServiceWorker(webpackConfig, bundleConfig) {
     new OfflinePlugin({
       caches: {
         main: ['index-*.js', 'index-*.css', '*.ttf', 'offline.html'],
-        additional: [':externals:'],
-        optional: [':rest:'],
+        additional: ['/favicon.ico'],
+        optional: [':rest:', ':externals:'],
       },
       // Setting this value lets the plugin know where our generated client
       // assets will be served from.
