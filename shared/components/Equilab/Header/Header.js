@@ -21,6 +21,7 @@ class Header extends Component {
     return (
       <div className={`${styles.wrapper}`}>
         <div className={`${styles.headerImg}`} />
+        <div className={`${styles.headerText}`}>Equilab</div>
         <nav className="navbar">
           <ul className={`nav navbar-nav ml-auto ${styles.headerLinks}`}>{this.renderLinks()}</ul>
         </nav>
