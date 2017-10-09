@@ -41,13 +41,13 @@ exports[`<Info /> renders 1`] = `
       className="col-lg-6 col-md-12 undefined"
     >
       <FormattedMessage
-        defaultMessage="TOTAL CONTROL"
+        defaultMessage="WHY EQUILAB?"
         id="Info.what"
         values={Object {}}
       />
       <p>
         <FormattedMessage
-          defaultMessage="En bra App!"
+          defaultMessage="TOTAL CONTROL"
           id="Info.what_sub"
           values={Object {}}
         />
