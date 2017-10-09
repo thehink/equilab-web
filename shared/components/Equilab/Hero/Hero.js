@@ -8,8 +8,8 @@ export default class Hero extends Component {
     return (
       <div className={`row ${styles.wrapper}`}>
         <div className={`${styles.maxWidth}`}>
-          <h2 className={`${styles.title}`}>HÄSTEN I FOKUS</h2>
-          <p className={`${styles.content}`}>Här har vi en massa saker</p>
+          <h2 className={`${styles.title}`}>MORE RIDING LESS WORRY</h2>
+          <p className={`${styles.content}`}>Equilab, used by more than 30 000 riders worldwide!</p>
           <DownloadBar />
         </div>
       </div>
