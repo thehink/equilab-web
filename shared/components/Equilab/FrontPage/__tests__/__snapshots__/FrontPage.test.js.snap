@@ -4,11 +4,6 @@ exports[`<FrontPage /> renders 1`] = `
 <div
   className="front-page"
 >
-  <span
-    onClick={[Function]}
-  >
-    Scroll Test
-  </span>
   <Hero />
   <Info />
   <Testimonials />
